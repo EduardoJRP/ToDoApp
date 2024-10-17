@@ -1,5 +1,9 @@
+"use client";
+
+import React, {useState} from 'react';
+
 export default function Home() {
-  const toDoList = [];
+  const [toDoList, setToDoList] = useState([]);
   
   return (
     <>
@@ -10,8 +14,11 @@ export default function Home() {
 
       {/* New Item to add to the list */}
       <div>
-        <label>Add new Item</label>
-        <input type="text"/>
+        <label htmlFor="toDoItem">
+          Add new Item
+          <input type="text" name="toDoItem"/>
+        </label>
+        
       </div>
 
       {/* New Item to add to the list */}
