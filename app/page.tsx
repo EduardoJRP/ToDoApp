@@ -2,8 +2,26 @@
 
 import React, {useState} from 'react';
 
+interface ToDoList {
+  items: string[];
+}
+
 export default function Home() {
-  const [toDoList, setToDoList] = useState([]);
+  const [toDoList, setToDoList] = useState<ToDoList>({ items: [] });
+
+  const addItem = () => {
+    const inputElement = document.getElementById('toDoItem') as HTMLInputElement;
+    console.log(inputElement);
+
+    if (inputElement && inputElement.value.trim() !== "") {
+      setToDoList((prepState) => ({
+        items: [...prepState.items, inputElement.value],
+      }));
+      inputElement.value = "";
+    } else {
+      console.error("Input is empty or not found.")
+    }
+  };
   
   return (
     <>
@@ -16,19 +34,20 @@ export default function Home() {
       <div>
         <label htmlFor="toDoItem">
           Add new Item
-          <input type="text" name="toDoItem"/>
+          <input type="text" name="toDoItem" id="toDoItem" placeholder='Enter item'/>
+          <button onClick={addItem}>Add Item</button>
         </label>
         
       </div>
 
       {/* New Item to add to the list */}
       <ul>
-        <li>
-          Buy the rice
-        </li>
-        <li>
-          Get coffee
-        </li>
+        {toDoList.items.length > 0 ? (
+          toDoList.items.map(
+            (item, index) => <li key={index}>{item}</li>)
+          ) : (
+            <li>No Items Listed Yet.</li>
+          )}
       </ul>
     </>
   );
