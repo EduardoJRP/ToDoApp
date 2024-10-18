@@ -20,6 +20,12 @@ export default function Home() {
       console.error("Input is empty or not found.")
     }
   };
+
+  const deleteItem = (index: number) => {
+    setToDoList((prepState) => ({
+      items: prepState.items.filter((_, i) => i !== index),
+    }));
+  };
   
   return (
     <>
@@ -49,7 +55,10 @@ export default function Home() {
       <ul>
         {toDoList.items.length > 0 ? (
           toDoList.items.map(
-            (item, index) => <li key={index}>{item}</li>)
+            (item, index) => <li key={index}>
+              {item}
+              <button onClick={() => deleteItem(index)}>Delete Item</button>
+            </li>)
           ) : (
             <li>No Items Listed Yet.</li>
           )}
