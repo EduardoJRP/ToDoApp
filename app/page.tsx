@@ -8,16 +8,14 @@ interface ToDoList {
 
 export default function Home() {
   const [toDoList, setToDoList] = useState<ToDoList>({ items: [] });
+  const [inputValue, setInputValue] = useState('');
 
-  const addItem = () => {
-    const inputElement = document.getElementById('toDoItem') as HTMLInputElement;
-    console.log(inputElement);
-
-    if (inputElement && inputElement.value.trim() !== "") {
+  const addItem = () => { 
+    if (inputValue.trim() !== "") {
       setToDoList((prepState) => ({
-        items: [...prepState.items, inputElement.value],
+        items: [...prepState.items, inputValue],
       }));
-      inputElement.value = "";
+      setInputValue('');
     } else {
       console.error("Input is empty or not found.")
     }
@@ -34,7 +32,14 @@ export default function Home() {
       <div>
         <label htmlFor="toDoItem">
           Add new Item
-          <input type="text" name="toDoItem" id="toDoItem" placeholder='Enter item'/>
+          <input 
+            type="text" 
+            name="toDoItem" 
+            id="toDoItem" 
+            placeholder='Enter item' 
+            value={inputValue} 
+            onChange={(e) => setInputValue(e.target.value)}
+            />
           <button onClick={addItem}>Add Item</button>
         </label>
         
