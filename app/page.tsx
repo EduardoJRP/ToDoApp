@@ -28,56 +28,55 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-gradient-to-r from-purple-400 to-blue-600">
+    <div className="flex flex-col items-center justify-center min-h-screen w-full bg-gradient-to-r from-purple-400 to-blue-600">
       {/* To Do List Title */}
-      <div className="flex justify-center items-center p-9">
-        <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-l from-gray-300 to-gray-800 drop-shadow-lg">
-          To Do List!
-        </h1>
+      <div className="flex flex-col w-full max-w-md mx-auto border-none rounded-lg shadow-lg bg-white">
+        <div className="flex justify-center items-center p-6 bg-gradient-to-r from-blue-600 to-purple-400 rounded-t-lg">
+          <h1 className="text-3xl font-bold text-white">To Do List!</h1>
+        </div>
+
+  {/* New Item to add to the list */}
+      <div className="flex flex-col p-6 space-y-4">
+        <label className="flex flex-col w-full" htmlFor="toDoItem">
+          <span className="font-semibold text-lg text-gray-800">Add a new Item</span>
+            <input
+              type="text"
+              name="toDoItem"
+              id="toDoItem"
+              placeholder="Enter item"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-400"
+            />
+            </label>
+            <button
+              className="w-full bg-purple-500 text-white font-semibold rounded-lg py-2 px-4 hover:bg-purple-600 transition-all"
+              onClick={addItem}
+            >
+              Add Item
+            </button>
+          </div>
+          
+  {/* List of Items */}
+        <ul className="flex flex-col items-center space-y-4 p-6">
+          {toDoList.items.length > 0 ? (
+            toDoList.items.map((item, index) => (
+              <li className="w-full flex justify-between items-center bg-gray-100 p-3 rounded-lg shadow-sm" key={index}>
+                <span className="text-gray-800 font-medium">{item}</span>
+                <button
+                  className="text-sm bg-red-500 text-white rounded-full px-4 py-1 hover:bg-red-600 transition-all"
+                  onClick={() => deleteItem(index)}
+                >
+                  Delete
+                </button>
+              </li>
+            ))
+          ) : (
+            <li className="text-gray-500">No Items Listed Yet.</li>
+          )}
+        </ul>
       </div>
 
-      {/* New Item to add to the list */}
-      <div className="flex flex-col space-y-4 items-center">
-        <label className="flex flex-col w-full max-w-sm" htmlFor="toDoItem">
-          <span className="font-semibold text-lg text-gray-800 p-2 text-center">
-            Add a new Item
-          </span>
-          <input
-            type="text"
-            name="toDoItem"
-            id="toDoItem"
-            placeholder="Enter item"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            className="flex-1 border border-gray-300 rounded-lg p-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-          />
-          <button
-            className="mt-2 bg-gradient-to-r from-purple-400 to-pink-600 text-white font-semibold rounded-full py-2 px-6 hover:shadow-lg transition-all duration-300"
-            onClick={addItem}
-          >
-            Add Item
-          </button>
-        </label>
-      </div>
-
-      {/* New Item to add to the list */}
-      <ul className="flex flex-col justify-center items-center p-9">
-        {toDoList.items.length > 0 ? (
-          toDoList.items.map((item, index) => (
-            <li className="font-semibold text-md m-2" key={index}>
-              {item}
-              <button
-                className="ml-4 bg-gradient-to-r from-purple-400 to-pink-600 text-white font-semibold rounded-full py-2 px-6 hover:shadow-lg transition-all duration-300"
-                onClick={() => deleteItem(index)}
-              >
-                Delete Item
-              </button>
-            </li>
-          ))
-        ) : (
-          <li className="font-semibold text-lg">No Items Listed Yet.</li>
-        )}
-      </ul>
     </div>
   );
 }
