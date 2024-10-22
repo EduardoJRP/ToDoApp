@@ -35,10 +35,12 @@ export default function Home() {
           <h1 className="text-3xl font-bold text-white">To Do List!</h1>
         </div>
 
-  {/* New Item to add to the list */}
-      <div className="flex flex-col p-6 space-y-4">
-        <label className="flex flex-col w-full" htmlFor="toDoItem">
-          <span className="font-semibold text-lg text-gray-800">Add a new Item</span>
+        {/* New Item to add to the list */}
+        <div className="flex flex-col p-6 space-y-4">
+          <label className="flex flex-col w-full" htmlFor="toDoItem">
+            <span className="font-semibold text-lg text-gray-800">
+              Add a new Item
+            </span>
             <input
               type="text"
               name="toDoItem"
@@ -48,20 +50,23 @@ export default function Home() {
               onChange={(e) => setInputValue(e.target.value)}
               className="border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-purple-400"
             />
-            </label>
-            <button
-              className="w-full bg-purple-500 text-white font-semibold rounded-lg py-2 px-4 hover:bg-purple-600 transition-all"
-              onClick={addItem}
-            >
-              Add Item
-            </button>
-          </div>
-          
-  {/* List of Items */}
+          </label>
+          <button
+            className="w-full bg-purple-500 text-white font-semibold rounded-lg py-2 px-4 hover:bg-purple-600 transition-all"
+            onClick={addItem}
+          >
+            Add Item
+          </button>
+        </div>
+
+        {/* List of Items */}
         <ul className="flex flex-col items-center space-y-4 p-6">
           {toDoList.items.length > 0 ? (
             toDoList.items.map((item, index) => (
-              <li className="w-full flex justify-between items-center bg-gray-100 p-3 rounded-lg shadow-sm" key={index}>
+              <li
+                className="w-full flex justify-between items-center bg-gray-100 p-3 rounded-lg shadow-sm"
+                key={index}
+              >
                 <span className="text-gray-800 font-medium">{item}</span>
                 <button
                   className="text-sm bg-red-500 text-white rounded-full px-4 py-1 hover:bg-red-600 transition-all"
@@ -76,7 +81,6 @@ export default function Home() {
           )}
         </ul>
       </div>
-
     </div>
   );
 }
