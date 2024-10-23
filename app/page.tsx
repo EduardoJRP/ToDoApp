@@ -8,7 +8,7 @@ interface ToDoList {
 
 interface ToDoItem {
   description: string;
-  marked: boolean;
+  checked: boolean;
 }
 
 export default function Home() {
@@ -19,7 +19,7 @@ export default function Home() {
     if (inputValue.trim() !== '') {
       const newItem: ToDoItem = {
         description: inputValue,
-        marked: false,
+        checked: false,
       };
 
       setToDoList((prevState) => ({
@@ -35,6 +35,18 @@ export default function Home() {
     setToDoList((prepState) => ({
       items: prepState.items.filter((_, i) => i !== index),
     }));
+  };
+
+  const checkListItem = (checkIndex: number) => {
+    const updatedItems = toDoList.items.map((item, index) => {
+      if (checkIndex == index) {
+        return { ...item, checked: true};
+      }
+      return item;
+    });
+
+    setToDoList({...toDoList, items: updatedItems});
+    console.log(toDoList);
   };
 
   return (
@@ -77,10 +89,10 @@ export default function Home() {
                 className="w-full flex justify-between items-center bg-gray-100 p-3 rounded-lg shadow-sm"
                 key={index}
               >
-                <span className="flex basis-4/6 text-gray-800 font-medium">
+                <span className={`flex basis-4/6 text-gray-800 font-medium ${item.checked ? 'line-through' : ''}`}>
                   {item.description}
                 </span>
-                <div className="flex flex-row">  
+                <div className="flex flex-row"> 
                   <button
                     className="bg-red-500 text-white rounded-full m-2 px-4 py-1 hover:bg-red-600 transition-all"
                     onClick={() => deleteListItem(index)}
@@ -102,7 +114,7 @@ export default function Home() {
                   </button>
                   <button
                     className="bg-green-500 text-white rounded-full m-2 px-4 py-1 hover:bg-red-600 transition-all"
-                    onClick={() => deleteListItem(index)}
+                    onClick={() => checkListItem(index)}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
