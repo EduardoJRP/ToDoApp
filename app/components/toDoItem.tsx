@@ -16,7 +16,7 @@ const ToDoItem: React.FC<ToDoItemProps> = ({
   return (
     <li className="w-full flex justify-between items-center bg-gray-100 p-3 rounded-lg shadow-sm">
       <span
-        className={`flex basis-4/6 text-gray-800 font-medium ${checked ? 'line-through' : ''}`}
+        className={`flex basis-4/6 text-gray-800 font-medium ${checked ? 'line-through decoration-4' : ''}`}
       >
         {description}
       </span>
@@ -41,23 +41,40 @@ const ToDoItem: React.FC<ToDoItemProps> = ({
           </svg>
         </button>
         <button
-          className="bg-green-500 text-white rounded-full m-2 px-4 py-1 hover:bg-red-600 transition-all"
+          className={`text-white rounded-full m-2 px-4 py-1 ${checked ? 'bg-yellow-500 hover:bg-yellow-600 transition-all' : 'bg-green-500 hover:bg-green-600 transition-all'}`}
           onClick={onCheck}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-            />
-          </svg>
+          {!checked ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+              />
+            </svg>
+          )}
         </button>
       </div>
     </li>
