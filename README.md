@@ -1,97 +1,84 @@
-# To Do App
+# ✅ To-Do List App
 
-An app for the track a list of to do items.
+A minimal task manager to add, edit, and delete tasks with a clean and simple interface.
 
 ---
 
-## Table of Contents
+## 📋 Table of Contents
 
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
-- [New Ideas](#newIdeas)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
-- [Licenses](#licenses)
+- [License](#license)
 
 ---
 
 ## Features
 
-- **Add and manage multiple tasks**: Add, delete and update tasks in the app.
-- **Responsive design for computers**: Design only for computers.
+- ➕ Add tasks with ease
+- ✅ Mark tasks as completed
+- 🗑️ Delete tasks from the list
+- 💻 Clean and responsive layout
 
 ---
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository**
 
 ```bash
 git clone https://github.com/EduardoJRP/ToDoApp.git
+cd CaloriesTrack
 ```
 
-2. Install dependencies:
+2. **Install dependencies**
 
 ```bash
 npm install
 ```
 
-3. Start the development server
-
+3. **Run the development server**
 ```bash
 npm run dev
 ```
 
-4. Open the app in your browser at https://localhost:3000
+4.  Open http://localhost:3000 in your browser
 
 ---
 
 ## Usage
 
-**NEED TO WORK ON THIS**
+- Start the dev server
+- Add, complete, and delete tasks as needed
+- All changes are stored in the local state (no backend required)
 
 ---
 
-## New Ideas
-
-- One idea is to create multiple lists, and be able to categorize tasks on each list. Also being able to drag the tasks to the different lists.
-
-## Screenshots
-
-**NEED TO WORK ON THIS**
+##  Screenshots
+*Coming soon! UI previews will be added here*
 
 ---
 
 ## Contributing
-
-You are welcome to contribute to make the To Do App even better! To contribute:
-
-1. Fork the repository
-
-2. Create a new branch for your feature:
+Pull request are welcome! Here's how to get started:
 
 ```bash
+# Fork the repository
+# Create a new branch
 git checkout -b feature-name
-```
 
-3. Commit your changes:
+# Commit your changes
+git commit -m "Add a feature"
 
-```bash
-git add .
-git commit -m "Add the feature"
-```
-
-4.  Push to your branch
-
-```bash
+# Push your branch
 git push origin feature-name
-```
 
-5. Open a pull request
+# Open a pull request 🚀
+```
 
 ---
 
-## Licenses
-
-No licenses added yet.
+## License
+This project currently does not have a license.
